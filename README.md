@@ -8,11 +8,16 @@
 The goals / steps of this project are the following:
 
 * Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
-* Optionally, you can also apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector. 
-* Note: for those first two steps don't forget to normalize your features and randomize a selection for training and testing.
+* Apply a color transform and append binned color features, as well as histograms of color, to  HOG feature vector. 
+
 * Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
-* Run your pipeline on a video stream (start with the test_video.mp4 and later implement on full project_video.mp4) and create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
-* Estimate a bounding box for vehicles detected.
+
+* The training script is located [here](https://github.com/hakimka/CarND-Vehicle-Detection/blob/master/processImageFindCars.ipynb) https://github.com/hakimka/CarND-Vehicle-Detection/blob/master/processImageFindCars.ipynb
+
+* The pipeline is run on a video stream  project_video.mp4  with  a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles
+* .
+* Bounding box for vehicles detected as displayed on the submission [video](https://github.com/hakimka/CarND-Vehicle-Detection/blob/master/videoOut/project_video.mp4).
+
 
 [//]: # (Image References)
 [image1a]: ./writeup/car.png
@@ -42,9 +47,33 @@ The goals / steps of this project are the following:
 
 ### Histogram of Oriented Gradients (HOG)
 
-#### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
+#### 1. HOG features from the training images.
 
 The code for this step is contained in the third code cell of the IPython notebook .  
+
+ 	if hog_feat == True:
+            if hog_channel == 'ALL':
+                hog_features = []
+                for channel in range(feature_image.shape[2]):
+                    hog_features.extend(get_hog_features(feature_image[:,:,channel], 
+                                        orient, pix_per_cell, cell_per_block, 
+                                        vis=False, feature_vec=True))      
+            else:
+                hog_features = get_hog_features(feature_image[:,:,hog_channel], orient, 
+                            pix_per_cell, cell_per_block, vis=False, feature_vec=True)
+            #8) Append features to list
+            #img_features.append(hog_features)    
+            
+        if spatial_feat == True and hist_feat == True and hog_feat == True:
+            features.append(np.concatenate((spatial_features, hist_features,hog_features)))
+        if spatial_feat == True and hist_feat == True and hog_feat == False:
+            features.append(np.concatenate((spatial_features, hist_features)))
+        if spatial_feat == True and hist_feat == False and hog_feat == True:
+            features.append(np.concatenate((spatial_features, hog_features)))
+        if spatial_feat == False and hist_feat == True and hog_feat == True:
+            features.append(np.concatenate((hist_features, hog_features)))
+        if spatial_feat == False and hist_feat == False and hog_feat == True:
+            features.append( hog_features)
 
 I started by reading in all the `vehicle` and `non-vehicle` images (cell 4).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
