@@ -36,11 +36,9 @@ The goals / steps of this project are the following:
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+  
 
----
-### Writeup / README
-
+---	
 
 ### Histogram of Oriented Gradients (HOG)
 
@@ -51,6 +49,7 @@ The code for this step is contained in the third code cell of the IPython notebo
 I started by reading in all the `vehicle` and `non-vehicle` images (cell 4).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1a]
+
 ![alt text][image1b]
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
