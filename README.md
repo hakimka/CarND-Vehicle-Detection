@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [hsvCh0]: ./writeup/hsvCh0.jpg
 [hsvCh1]: ./writeup/hsvCh1.jpg
 [hsvCh2]: ./writeup/hsvCh2.jpg
-[hog]:    ./writeup/hog.jpg
+[hog]:    ./writeup/hogSmall.jpg
 [windowSlide]: ./writeup/windowSlide.jpg
 [windowSlide2]: ./writeup/windowSlide2.jpg
 [candidates1]: ./writeup/candidates1.jpg
@@ -59,7 +59,6 @@ Here is an example using the `HSV` color space, channel 2. The channel displayed
 ![alt text][hsvCh1]
 
 and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
-
 
 ![alt text][hog]
 
