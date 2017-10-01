@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1a]: ./writeup/car.png
-[image1b]: ./writeup/notcar.png
+[image1b]: ./writeup/notCar.png
 [hsvCh0]: ./writeup/hsvCh0.jpg
 [hsvCh1]: ./writeup/hsvCh1.jpg
 [hsvCh2]: ./writeup/hsvCh2.jpg
