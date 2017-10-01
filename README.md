@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 * The training script is located [here](https://github.com/hakimka/CarND-Vehicle-Detection/blob/master/processImageFindCars.ipynb) https://github.com/hakimka/CarND-Vehicle-Detection/blob/master/processImageFindCars.ipynb
 
 * The pipeline is run on a video stream  project_video.mp4  with  a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles
-* .
+
 * Bounding box for vehicles detected as displayed on the submission [video](https://github.com/hakimka/CarND-Vehicle-Detection/blob/master/videoOut/project_video.mp4).
 
 
