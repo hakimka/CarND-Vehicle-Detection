@@ -1,5 +1,5 @@
 
-#Writeup 
+# Writeup 
 
 ---
 
@@ -39,12 +39,12 @@ The goals / steps of this project are the following:
 ###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
+### Writeup / README
 
 
-###Histogram of Oriented Gradients (HOG)
+### Histogram of Oriented Gradients (HOG)
 
-####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
+#### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
 The code for this step is contained in the third code cell of the IPython notebook .  
 
@@ -64,7 +64,7 @@ and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_
 
 ![alt text][hog]
 
-####2. Explain how you settled on your final choice of HOG parameters.
+#### 2. Explain how you settled on your final choice of HOG parameters.
 
 I tried various combinations of parameters and settled on the following:
 
@@ -74,13 +74,13 @@ I tried various combinations of parameters and settled on the following:
 	pix_per_cell      = 8 # HOG pixels per cell
 	cell_per_block    = 4 # HOG cells per block
 
-####3. Tained a classifier.
+#### 3. Tained a classifier.
 
 I trained a linear SVM using single_img_features() function. The function receives parameters to use spatial_features and histograms, as well the hog_features. Having these parameters helped to select needed features. 
 
-###Sliding Window Search
+### Sliding Window Search
 
-####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+#### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
 Sliding window created search inspection windows varying from size 64 to 154 pixels.
  	
@@ -101,7 +101,7 @@ The search windows are placed in the bottom half of the image.
 
 ![alt text][windowSlide]
 
-####2. Examples of test images to demonstrate how pipeline is working
+#### 2. Examples of test images to demonstrate how pipeline is working
 
 The images are scanned with window blocks of 3 scales ranging from 64x64 upto 154X154. The color space for image representation was the second channel of HSV image. The searches of the SVM were performed on histogram feature and hog feature for each inspection window.  The following examples demonstrate the search results of the pipeline:
 
@@ -116,11 +116,11 @@ The images are scanned with window blocks of 3 scales ranging from 64x64 upto 15
 
 ### Video Implementation
 
-####1. Link to the final video output.  
+#### 1. Link to the final video output.  
 Here's a [link to my video result](https://github.com/hakimka/CarND-Vehicle-Detection/blob/master/videoOut/project_video.mp4)
 
 
-####2. Filtering for false positives and combining overlapping bounding boxes.
+#### 2. Filtering for false positives and combining overlapping bounding boxes.
 
 For each frame a list of candidate windows was generated as presented above. The pipeline locating cars in the frames as follows: 
 
@@ -190,22 +190,22 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ---
 
-###Discussion
+### Discussion
 
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-#Issues
+# Issues
 
 The main issue the pipeline does not work in a real time. To process each frame it took more than 2-3 seconds. 
 
 Another problem the algorithm produces a lot of false positives. The left wall in the video was identified quite a bit as "car presence." 
 
-#Possible Failures
+# Possible Failures
 I think the existing approach will fail on variety of ambient lighting conditions. As well as presence of trucks, motor
 
 
 
-#A possible approach
+# A possible approach
 
 One way to beef up the car detection would be to use DNN. Another way to speed up the algorithm would be to please search windows along the lanes and scale them accordingly long the distance from the observer car.   
 
